@@ -34,7 +34,7 @@
             <h3 class="panel-title">注册</h3>
           </div>
           <div class="panel-body">
-            <form role="form" class="login-form" action="{:url('reg_submit')}" method="post">
+            <form role="form" class="login-form" action="{:url('reg')}" method="post">
               <fieldset>
                 <div class="form-group">
                   <input class="form-control username" placeholder="用户名" name="username" data-url="{:url('user_exist')}">
