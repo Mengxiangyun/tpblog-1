@@ -7,7 +7,7 @@ use app\backend\controller\Base;
 
 class Category extends Base
 {
-	public function list(Request $request)
+	public function index(Request $request)
 	{
 		$this->checkSession();
 

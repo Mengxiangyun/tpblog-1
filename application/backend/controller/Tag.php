@@ -7,7 +7,7 @@ use app\backend\controller\Base;
 
 class Tag extends Base
 {
-	public function list(Request $request)
+	public function index(Request $request)
 	{
 		$this->checkSession();
 

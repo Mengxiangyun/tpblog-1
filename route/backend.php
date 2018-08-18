@@ -7,7 +7,7 @@ Route::rule('/reg', 'backend/Reg/reg')->name('reg');
 Route::get('/user/exist', 'backend/Reg/userExist')->name('user_exist');
 
 // 分类管理
-Route::get('/admin/category', 'backend/Category/list')->name('admin_category_list');
+Route::get('/admin/category', 'backend/Category/index')->name('admin_category_list');
 
 // 标签管理
-Route::get('/admin/tag', 'backend/Tag/list')->name('admin_tag_list');
+Route::get('/admin/tag', 'backend/Tag/index')->name('admin_tag_list');
