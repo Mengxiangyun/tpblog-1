@@ -42,15 +42,18 @@
           <li><a href="./列表页.html">文章列表</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{:url('login')}">登录</a></li>
-          <li><a href="{:url('reg')}">注册</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我 <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="./后台管理.html"><i class="fa fa-dashboard fa-fw"></i> 管理后台</a></li>
-              <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> 安全退出</a></li>
-            </ul>
-          </li>
+          {if $Think.session.user }
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$Think.session.user.nickname} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="./后台管理.html"><i class="fa fa-dashboard fa-fw"></i> 管理后台</a></li>
+                <li><a href="{:url('logout')}"><i class="fa fa-sign-out fa-fw"></i> 安全退出</a></li>
+              </ul>
+            </li>
+          {else /}
+            <li><a href="{:url('login')}">登录</a></li>
+            <li><a href="{:url('reg')}">注册</a></li>
+          {/if}
         </ul>
       </div>
       <!--/.nav-collapse -->

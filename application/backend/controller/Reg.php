@@ -10,6 +10,10 @@ class Reg extends Controller
 	
 	public function reg(Request $request)
 	{
+		if (session('user')) {
+			$this->redirect('homepage');
+		}
+		
 		if ($request->isPost()) {
 			$postData = $request->post();
 			// 用户名去除空格
@@ -19,6 +23,9 @@ class Reg extends Controller
 				$this->error('注册失败,用户名不合法');
 			}
 
+			if (!$postData['password']) {
+				$this->error('注册失败,密码不能为空');
+			}
 			// 验证重复密码是否一致
 			if ($postData['password'] != $postData['repassword']) {
 				$this->error('注册失败,两次密码不一致');

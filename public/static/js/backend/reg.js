@@ -1,16 +1,4 @@
 $(function(){
-
-	function append_error(form_group, error_msg) {
-		form_group.addClass('has-error');
-		form_group.find('.error-msg').remove();
-		form_group.append('<span class="help-block error-msg">'+error_msg+'</span>');
-	}
-
-	function remove_error(form_group) {
-		form_group.removeClass('has-error');
-		form_group.find('.error-msg').remove();
-	}
-
 	// 验证用户名
 	function check_username() {
 		var pattern = /^\w{4,12}$/;
@@ -50,12 +38,20 @@ $(function(){
 
 		var password = input.val();
 		var repassword = reinput.val();
-		if (password!=repassword) {
-			append_error(form_group, '两次密码不一致');
-			append_error(reform_group, '两次密码不一致');
+
+		if (!password) {
+			append_error(form_group, '密码不能为空');
 		} else {
 			remove_error(form_group);
-			remove_error(reform_group);
+
+			if (password!=repassword) {
+				append_error(form_group, '两次密码不一致');
+				append_error(reform_group, '两次密码不一致');
+			} else {
+				remove_error(form_group);
+				remove_error(reform_group);
+			}
+
 		}
 	}
 

@@ -34,17 +34,17 @@
             <h3 class="panel-title">登录</h3>
           </div>
           <div class="panel-body">
-            <form role="form" class="login-form" action="" novalidate="novalidate">
+            <form role="form" class="login-form" action="{:url('login')}" method="post">
               <fieldset>
                 <div class="form-group">
-                  <input class="form-control" placeholder="用户名" name="username" autofocus="">
+                  <input class="form-control" placeholder="用户名" name="username">
                 </div>
                 <div class="form-group">
                   <input class="form-control" placeholder="密码" name="password" type="password" value="">
                 </div>
                 <!-- Change this to a button or input when using this as a form -->
                 <div class="form-group">
-                  <button class="btn btn-lg btn-success btn-block">登录</button>
+                  <button type="button" class="btn btn-lg btn-success btn-block btn-submit">登录</button>
                 </div>
                 <a class="text-warning" href="{:url('reg')}">没有账号-注册</a>
               </fieldset>
@@ -64,6 +64,8 @@
   <script src="__STATIC__/libs/metisMenu/metisMenu.min.js"></script>
   <!-- Custom Theme JavaScript -->
   <script src="__STATIC__/js/sb-admin-2.js"></script>
+  <script src="__STATIC__/js/backend/common.js"></script>
+  <script src="__STATIC__/js/backend/login.js"></script>
 </body>
 
 </html>

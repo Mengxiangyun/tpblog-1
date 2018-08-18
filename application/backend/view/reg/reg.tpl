@@ -68,6 +68,7 @@
   <script src="__STATIC__/libs/metisMenu/metisMenu.min.js"></script>
   <!-- Custom Theme JavaScript -->
   <script src="__STATIC__/js/sb-admin-2.js"></script>
+  <script src="__STATIC__/js/backend/common.js"></script>
   <script src="__STATIC__/js/backend/reg.js"></script>
 </body>
 
