@@ -46,7 +46,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$Think.session.user.nickname} <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="./后台管理.html"><i class="fa fa-dashboard fa-fw"></i> 管理后台</a></li>
+                <li><a href="{:url('admin_category_list')}"><i class="fa fa-dashboard fa-fw"></i> 管理后台</a></li>
                 <li><a href="{:url('logout')}"><i class="fa fa-sign-out fa-fw"></i> 安全退出</a></li>
               </ul>
             </li>

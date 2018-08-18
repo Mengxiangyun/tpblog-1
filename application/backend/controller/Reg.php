@@ -1,13 +1,12 @@
 <?php
 namespace app\backend\controller;
 
-use think\Controller;
 use think\Request;
+use app\backend\controller\Base;
 use app\common\model\UserModel;
 
-class Reg extends Controller
+class Reg extends Base
 {
-	
 	public function reg(Request $request)
 	{
 		if (session('user')) {

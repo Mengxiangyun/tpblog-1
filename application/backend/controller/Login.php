@@ -2,13 +2,12 @@
 
 namespace app\backend\controller;
 
-use think\Controller;
 use think\Request;
+use app\backend\controller\Base;
 use app\common\model\UserModel;
 
-class Login extends Controller
+class Login extends Base
 {
-	
 	public function login(Request $request)
 	{
 		if (session('user')) {
