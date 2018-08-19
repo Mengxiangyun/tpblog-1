@@ -7,7 +7,7 @@
 	    <h1 class="page-header">
 	      分类列表
 	      <div class="pull-right">
-	        <a class="btn btn-success btn-sm" href="./添加分类.html">添加分类</a>
+	        <a class="btn btn-success btn-sm" href="{:url('admin_category_add')}">添加分类</a>
 	      </div>
 	    </h1>
 	  </div>
@@ -19,54 +19,33 @@
 	            <th>#</th>
 	            <th>分类标题</th>
 	            <th>文章数量</th>
+	            <th>创建时间</th>
 	            <th>操作</th>
 	          </tr>
 	        </thead>
 	        <tbody>
-	          <tr>
-	            <th scope="row">1</th>
-	            <td>生活随想</td>
-	            <td>10</td>
-	            <td>
-	              <div class="btn-group">
-	                <a class="btn btn-default btn-sm" href="#">编辑</a>
-	                <a class="btn btn-danger btn-sm" href="#">删除</a>
-	              </div>
-	            </td>
-	          </tr>
-	          <tr>
-	            <th scope="row">2</th>
-	            <td>php语言</td>
-	            <td>13</td>
-	            <td>
-	              <div class="btn-group">
-	                <a class="btn btn-default btn-sm" href="#">编辑</a>
-	                <a class="btn btn-danger btn-sm" href="#">删除</a>
-	              </div>
-	            </td>
-	          </tr>
-	          <tr>
-	            <th scope="row">3</th>
-	            <td>mysql数据库</td>
-	            <td>2</td>
-	            <td>
-	              <div class="btn-group">
-	                <a class="btn btn-default btn-sm" href="#">编辑</a>
-	                <a class="btn btn-danger btn-sm" href="#">删除</a>
-	              </div>
-	            </td>
-	          </tr>
+						{foreach $categories as $key=>$category } 
+		          <tr>
+		            <th scope="row">1</th>
+		            <td>{$category->name}</td>
+		            <td>10</td>
+		            <td>{$category->created_time|date='Y-m-d H:i:s'}</td>
+		            <td>
+		              <div class="btn-group">
+		                <a class="btn btn-default btn-sm" href="{:url('admin_category_edit', 'id='.$category->id)}">编辑</a>
+		                <a class="btn btn-danger btn-sm btn-delete" href="{:url('admin_category_delete', 'id='.$category->id)}">删除</a>
+		              </div>
+		            </td>
+		          </tr>
+						{/foreach}
 	        </tbody>
 	      </table>
 	    </div>
-	    <nav class="web-pagination text-center">
-	      <ul class="pagination">
-	        <li class="active"><a href="#">1</a></li>
-	        <li><a href="#">2</a></li>
-	        <li><a href="#">下一页</a></li>
-	        <li><a href="#">尾页</a></li>
-	      </ul>
-	    </nav>
 	  </div>
 	</div>
 {/block}
+
+{block name="customscript"}
+  <script src="__STATIC__/js/backend/category.js"></script>
+{/block}
+

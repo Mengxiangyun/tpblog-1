@@ -5,7 +5,7 @@ use think\Model;
 
 class UserModel extends Model
 {
-	protected $pk = 'id';
+	protected $pk   = 'id';
 	protected $name = 'users';
 	// protected $table = 'blog_users';
 

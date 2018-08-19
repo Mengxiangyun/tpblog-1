@@ -7,7 +7,14 @@ Route::rule('/reg', 'backend/Reg/reg')->name('reg');
 Route::get('/user/exist', 'backend/Reg/userExist')->name('user_exist');
 
 // 分类管理
-Route::get('/admin/category', 'backend/Category/index')->name('admin_category_list');
+Route::get('/admin/category$', 'backend/Category/index')->name('admin_category_list');
+Route::rule('/admin/category/add$', 'backend/Category/add')->name('admin_category_add');
+Route::rule('/admin/category/:id/edit$', 'backend/Category/edit')
+		->pattern(['id'=>'\d+'])
+		->name('admin_category_edit');
+Route::get('/admin/category/:id/delete$', 'backend/Category/delete')
+		->pattern(['id'=>'\d+'])
+		->name('admin_category_delete');
 
 // 标签管理
 Route::get('/admin/tag', 'backend/Tag/index')->name('admin_tag_list');
