@@ -26,7 +26,7 @@
 	        <tbody>
 						{foreach $categories as $key=>$category } 
 		          <tr>
-		            <th scope="row">1</th>
+		            <th scope="row">{$key+1}</th>
 		            <td>{$category->name}</td>
 		            <td>10</td>
 		            <td>{$category->created_time|date='Y-m-d H:i:s'}</td>

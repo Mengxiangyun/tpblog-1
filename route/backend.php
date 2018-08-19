@@ -17,4 +17,17 @@ Route::get('/admin/category/:id/delete$', 'backend/Category/delete')
 		->name('admin_category_delete');
 
 // 标签管理
-Route::get('/admin/tag', 'backend/Tag/index')->name('admin_tag_list');
+Route::get('/admin/tag$', 'backend/Tag/index')->name('admin_tag_list');
+Route::rule('/admin/tag/add$', 'backend/Tag/add')->name('admin_tag_add');
+Route::rule('/admin/tag/:id/edit$', 'backend/Tag/edit')
+		->pattern(['id'=>'\d+'])
+		->name('admin_tag_edit');
+Route::get('/admin/tag/:id/delete$', 'backend/Tag/delete')
+		->pattern(['id'=>'\d+'])
+		->name('admin_tag_delete');
+
+// 文章管理
+Route::get('/admin/article$', 'backend/Article/index')->name('admin_article_list');
+Route::rule('/admin/article/add$', 'backend/Article/add')->name('admin_article_add');
+
+

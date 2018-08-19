@@ -8,9 +8,10 @@ use app\common\model\CategoryModel;
 
 class Category extends Base
 {
-	public function init()
+	public function initialize()
 	{
 		$this->checkSession();
+		$this->assign('nav', 'category');
 	}
 
 	public function index(Request $request)
