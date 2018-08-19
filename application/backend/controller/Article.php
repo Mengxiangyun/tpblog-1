@@ -5,6 +5,8 @@ namespace app\backend\controller;
 use think\Request;
 use app\backend\controller\Base;
 use app\common\model\ArticleModel;
+use app\common\model\CategoryModel;
+use app\common\model\TagModel;
 
 class Article extends Base
 {
