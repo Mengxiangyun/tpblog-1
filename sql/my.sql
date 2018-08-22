@@ -47,3 +47,4 @@ CREATE TABLE blog_article_tag_map (
 ) ENGINE innodb CHARSET utf8;
 
 ALTER TABLE blog_articles add sub_title varchar(128) not null default '' after title;
+ALTER TABLE blog_articles add views int not null default 0 after body;

@@ -29,5 +29,9 @@ Route::get('/admin/tag/:id/delete$', 'backend/Tag/delete')
 // 文章管理
 Route::get('/admin/article$', 'backend/Article/index')->name('admin_article_list');
 Route::rule('/admin/article/add$', 'backend/Article/add')->name('admin_article_add');
-
-
+Route::rule('/admin/article/:id/edit$', 'backend/Article/edit')
+		->pattern(['id'=>'\d+'])
+		->name('admin_article_edit');
+Route::get('/admin/article/:id/delete$', 'backend/Article/delete')
+		->pattern(['id'=>'\d+'])
+		->name('admin_article_delete');

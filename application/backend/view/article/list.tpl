@@ -26,17 +26,20 @@
             </tr>
           </thead>
           <tbody>
-            {foreach $articles as $key=>$article } 
+            {foreach $articles as $key=>$article }
+            {// assign name="category" value="$newCategories[$article->category_id]" /}
+            <!-- 把这个文章对应的分类拿出来 -->
               <tr>
                 <th scope="row">{$key+1}</th>
                 <td>{$article->title}</td>
-                <td>{$article->category_id}</td>
-                <td>12</td>
+                <!-- <td>{// $category->name|default=""}</td> -->
+                <td>{$article->category->name}</td>
+                <td>{$article->views}</td>
                 <td>{$article->created_time|date='Y-m-d H:i:s'}</td>
                 <td>
                   <div class="btn-group">
-                    <a class="btn btn-default btn-sm" href="#">编辑</a>
-                    <a class="btn btn-danger btn-sm" href="#">删除</a>
+                    <a class="btn btn-default btn-sm" href="{:url('admin_article_edit', 'id='.$article->id)}">编辑</a>
+                    <a class="btn btn-danger btn-sm" href="{:url('admin_article_delete', 'id='.$article->id)}">删除</a>
                   </div>
                 </td>
               </tr>

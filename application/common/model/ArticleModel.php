@@ -13,6 +13,18 @@ class ArticleModel extends Model
 	protected $pk   = 'id';
 	protected $name = 'articles';
 
+	// 一对一关联
+	public function category()
+    {
+        return $this->hasOne('CategoryModel', 'id', 'category_id');
+    }
+
+	// 多对多关联
+    public function tags()
+    {
+        return $this->belongsToMany('TagModel', '\\app\\common\\model\\ArticleTagMapModel', 'tag_id', 'article_id');
+    }
+
 	public function getCurrentUser()
 	{
 		$userId = session('user')['id'];
@@ -37,13 +49,13 @@ class ArticleModel extends Model
 			$article->save();
 
 			if (isset($postData['tag']) && !empty($postData['tag'])) {
-				$articleTag = new ArticleTagMapModel;
-				$tags = [];
-				foreach ($postData['tag'] as $tagId) {
-					$tags[] = ['article_id'=>$article->id, 'tag_id'=>$tagId];
-				}
-
-				$articleTag->saveAll($tags);
+				// $articleTag = new ArticleTagMapModel;
+				// $tags = [];
+				// foreach ($postData['tag'] as $tagId) {
+				// 	$tags[] = ['article_id'=>$article->id, 'tag_id'=>$tagId];
+				// }
+				// $articleTag->saveAll($tags);
+				$article->tags()->saveAll($postData['tag']);
 			}
 
 			// 提交事务
@@ -55,6 +67,46 @@ class ArticleModel extends Model
 		    Db::rollback();
 			return false;
 		}
+	}
+
+	public function editArticle($id, $postData)
+	{
+		$currentUser = $this->getCurrentUser();
+
+		Db::startTrans();
+		try {
+
+			$article = self::get($id);
+
+			$article->title = $postData['title'];
+			$article->sub_title = $postData['subtitle'];
+			$article->body = $postData['content'];
+			$article->category_id = $postData['category'];
+			$article->updated_time = time();
+
+			$article->save();
+
+			// ArticleTagMapModel::where('article_id', $id)->delete();
+			$article->tags()->detach();
+			if (isset($postData['tag']) && !empty($postData['tag'])) {
+				// $articleTag = new ArticleTagMapModel;
+				// $tags = [];
+				// foreach ($postData['tag'] as $tagId) {
+				// 	$tags[] = ['article_id'=>$article->id, 'tag_id'=>$tagId];
+				// }
+				// $articleTag->saveAll($tags);
+				$article->tags()->saveAll($postData['tag']);
+			}
+			// 提交事务
+			Db::commit();
+
+			return $article;
+		} catch (\Exception $e) {
+		    // 回滚事务
+		    Db::rollback();
+			return false;
+		}
+
 	}
 
 }
