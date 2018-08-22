@@ -48,7 +48,7 @@
           <!-- /.dropdown -->
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="fa fa-user fa-fw"></i>{$Think.session.user.nickname} <i class="fa fa-caret-down"></i>
+              <i class="fa fa-user fa-fw"></i>{$Think.session.user.username} <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
               <li><a href="./修改密码.html"><i class="fa fa-gear fa-fw"></i> 修改密码</a></li>

@@ -22,6 +22,7 @@
               <th>分类</th>
               <th>浏览量</th>
               <th>创建时间</th>
+              <th>修改时间</th>
               <th>操作</th>
             </tr>
           </thead>
@@ -36,6 +37,7 @@
                 <td>{$article->category->name}</td>
                 <td>{$article->views}</td>
                 <td>{$article->created_time|date='Y-m-d H:i:s'}</td>
+                <td>{$article->updated_time|date='Y-m-d H:i:s'}</td>
                 <td>
                   <div class="btn-group">
                     <a class="btn btn-default btn-sm" href="{:url('admin_article_edit', 'id='.$article->id)}">编辑</a>
@@ -48,12 +50,7 @@
         </table>
       </div>
       <nav class="web-pagination text-center">
-        <ul class="pagination">
-          <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">下一页</a></li>
-          <li><a href="#">尾页</a></li>
-        </ul>
+        {$page|raw}
       </nav>
     </div>
   </div>

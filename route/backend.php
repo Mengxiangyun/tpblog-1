@@ -35,3 +35,8 @@ Route::rule('/admin/article/:id/edit$', 'backend/Article/edit')
 Route::get('/admin/article/:id/delete$', 'backend/Article/delete')
 		->pattern(['id'=>'\d+'])
 		->name('admin_article_delete');
+
+// 个人信息
+Route::rule('/admin/profile$', 'backend/Profile/index')->name('admin_profile');
+Route::post('/admin/avatar/change$', 'backend/Profile/avatarChange')->name('admin_avatar_change');
+

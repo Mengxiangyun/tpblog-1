@@ -77,6 +77,9 @@ class ArticleModel extends Model
 		try {
 
 			$article = self::get($id);
+			if (!$article) {
+				return false;
+			}
 
 			$article->title = $postData['title'];
 			$article->sub_title = $postData['subtitle'];

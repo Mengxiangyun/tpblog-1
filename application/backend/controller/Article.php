@@ -23,8 +23,9 @@ class Article extends Base
 
 		$articles = ArticleModel::where('user_id', $currentUser->id)
 						->order('id', 'desc')
-						->select();
+						->paginate(10);
 
+		$page = $articles->render();
 		// 通过循环
 		// foreach ($articles as $key => $article) {
 		// 	$category = CategoryModel::get($article->category_id);
@@ -44,6 +45,7 @@ class Article extends Base
 		// }
 
 		$this->assign('articles', $articles);
+		$this->assign('page', $page);
 		// $this->assign('newCategories', $newCategories);
 		return $this->fetch('article/list');
 	}
@@ -125,7 +127,6 @@ class Article extends Base
 
 		$this->assign('categories', $categories);
 		$this->assign('tags', $tags);
-
 		$this->assign('article', $article);
 		return $this->fetch('article/edit');
 	}
